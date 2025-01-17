@@ -23,31 +23,6 @@ function replaceMarkdownLinks() {
   });
 }
 
-// Function to initialize the MutationObserver
-function initMutationObserver() {
-  const targetNode = document.body;
-  const observerOptions = {
-    childList: true,
-    subtree: true
-  };
-
-  const observer = new MutationObserver((mutationsList, observer) => {
-    for (let mutation of mutationsList) {
-      if (mutation.type === 'childList') {
-        const addedNodes = mutation.addedNodes;
-        for (let node of addedNodes) {
-          if (node.nodeType === Node.ELEMENT_NODE && node.classList.contains('markdown-body')) {
-            replaceMarkdownLinks();
-            return;
-          }
-        }
-      }
-    }
-  });
-
-  observer.observe(targetNode, observerOptions);
-}
-
 // Run on initial load
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initMutationObserver);
