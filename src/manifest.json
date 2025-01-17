@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "GitHub Markdown Link Replacer",
+  "version": "1.0",
+  "description": "Replaces [[#section name]] and [[filename]] links in GitHub markdown previews with HTML links",
+  "permissions": ["activeTab"],
+  "content_scripts": [
+    {
+      "matches": ["https://github.com/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
+
